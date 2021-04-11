@@ -25,11 +25,6 @@ export class PaintFuck {
         this.height = height;
 
         this.prepareInput();
-
-        console.log(code)
-        console.log(iterations)
-        console.log(width)
-        console.log(height)
     }
 
     private commands = new Map([
