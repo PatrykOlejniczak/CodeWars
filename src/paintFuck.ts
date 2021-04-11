@@ -3,7 +3,6 @@ export function interpreter(code: string, iterations: number, width: number, hei
     return compiler.execute();
 }
 
-
 export class PaintFuck {
     private code: string;
     private iternations: number;
