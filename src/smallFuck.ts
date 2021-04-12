@@ -75,7 +75,7 @@ export class SmallFuck {
     private jump() {
         if (this.tape[this.currentTapePointer] != "0") {
             return;
-        }            
+        }
 
         var closingIndex = this.code
             .substring(this.currentCommandPointer)
