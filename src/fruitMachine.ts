@@ -18,6 +18,10 @@ export class FruitMachine {
         ['Jack', 1]
     ]);
 
+    private readonly defaultResult = 0;
+    private readonly wildCardModifier = 2;
+    private readonly fullSameModifier = 10;
+
     private reels: string[][];
 
     constructor(reels: string[][]) {
@@ -25,31 +29,30 @@ export class FruitMachine {
     }
 
     public getResult(spins: number[]): number {
-        console.log(spins)
         var slots = [];
         for (var i = 0; i < spins.length; i++) {
             slots.push(this.reels[i][spins[i]]);
         }
 
         var result = this.groupBy(slots);
-        if (result.size < 3) {
+        if (result.size < spins.length) {
             if (result.size == 1) {
-                var multipler = this.result.get(result.keys().next().value) ?? 0;
-                return multipler * 10;
+                var multipler = this.result.get(result.keys().next().value) ?? this.defaultResult;
+                return multipler * this.fullSameModifier;
             } else {
                 var pointSlot = [...result.entries()].find(v => v[1] == 2);
-                var multipler = this.result.get(pointSlot?.[0]) ?? 0;
+                var multipler = this.result.get(pointSlot?.[0]) ?? this.defaultResult;
 
                 var shouldApllyBonus = [...result.entries()].find(v => v[0] == this.bonus);
                 if (pointSlot?.[0] != this.bonus && shouldApllyBonus) {
-                    multipler *= 2;
+                    multipler *= this.wildCardModifier;
                 }
 
                 return multipler;
             }
         }
         
-        return 0;
+        return this.defaultResult;
     }
 
     private groupBy(elements: string[]) {
