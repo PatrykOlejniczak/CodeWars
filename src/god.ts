@@ -7,14 +7,6 @@ export class God {
     }
 }
 
-export class Human {
-
-}
-
-export class Man extends Human {
-
-}
-
-export class Woman extends Human {
-
-}
+export class Human { }
+export class Man extends Human { }
+export class Woman extends Human { }
