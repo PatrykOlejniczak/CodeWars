@@ -6,7 +6,7 @@ export function splitTheBill(x: { [k: string]: number }): { [k: string]: number 
 
     var perFriend = sum / Object.values(x).length;
     for (let element of Object.keys(x)) {
-        x[element] = Math.floor((x[element] - perFriend) * 100) / 100;
+        x[element] = Math.round((x[element] - perFriend) * 100) / 100;
     }
 
     return x;
